@@ -6,12 +6,14 @@ import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
 public class Main {
     public static void main(String[] args) {
+        BotLogger.logInfo("Запуск бота CRIB...");
+
         try {
             TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
-            botsApi.registerBot(new EchoBot());
-            System.out.println("Бот запущен и готов к работе!");
+            botsApi.registerBot(new CRIBBot());
+            BotLogger.logInfo("Бот успешно запущен и готов к работе!");
         } catch (TelegramApiException e) {
-            e.printStackTrace();
+            BotLogger.logError("Ошибка при запуске бота", e);
         }
     }
 }
